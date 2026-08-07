@@ -1,6 +1,6 @@
-# [NAZWA PROJEKTU]
+# Mountain Car — Landing Page
 
-<!-- Jednozdaniowy opis: co to robi i dla kogo. UZUPELNIJ przy starcie projektu. -->
+Main landing page for **Mountain Car** — car rental & garage services in Iceland (rental + garage in one place). Built and operated by [Kamil Jan](https://kamiljan.com).
 
 ## Stack
 - Frontend: React 18 + TypeScript + Vite + Tailwind
