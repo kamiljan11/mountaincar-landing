@@ -1,0 +1,20 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Node (na wypadek gdyby E2E tooling zostal kiedys podpiety — docs/quality/BACKLOG.md)
+node_modules/
+npm-debug.log*
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Env
+.env
+.env.local
