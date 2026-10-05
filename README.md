@@ -30,20 +30,33 @@ same as production:
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Then visit `http://localhost:8000`. There is nothing to install: no `npm install`, no build
+step, no `.env`.
 
 ## Testing
 
-`e2e/smoke.spec.ts` is a Playwright smoke spec (page loads, no console errors). It is **not
-wired to a runner yet** — the repo has no `package.json`/`playwright.config.ts`, so
-`npx playwright test` cannot resolve the `@playwright/test` import today (verified
-2026-09-05). The "E2E smoke" CI job step-skips until that's fixed rather than failing.
-Tracked in [`docs/quality/BACKLOG.md`](docs/quality/BACKLOG.md).
+There are no automated tests: the page has no logic, scripts or build. CI runs Semgrep and
+Gitleaks on every push/PR (the npm, lint and Playwright steps skip themselves because there is no
+`package.json`). Manual check before merging: open the page locally at desktop and phone width and
+confirm the Garage card links to `https://garage.mountaincar.is`. If a real smoke test is ever
+wanted, see [`docs/quality/BACKLOG.md`](docs/quality/BACKLOG.md).
 
 ## Deploying
 
-Push to `main` — Vercel builds and deploys automatically. No manual "Publish" step (this is
-a Vercel project, not Lovable — see the ADR above for why).
+Merge to `main` — Vercel deploys automatically (every PR also gets a Preview deployment). No manual
+"Publish" step (this is a Vercel project, not Lovable — see the ADR above for why).
+Operations, rollback, domain/DNS and common changes (e.g. restoring the hidden Car Rental card):
+[`docs/RUNBOOK.md`](docs/RUNBOOK.md).
+
+## Documentation map
+
+| File | Read it for |
+|---|---|
+| [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | hosting, domain, deploy, rollback, monitoring, common changes (Polish) |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | what is where, data flow (Polish) |
+| [`docs/GLOSSARY.md`](docs/GLOSSARY.md) | apex vs `garage.` vs `rental.` (Polish) |
+| [`docs/adr/`](docs/adr/) | architecture decisions |
+| [`CHANGELOG.md`](CHANGELOG.md) | what changed and when |
 
 ## How security is handled
 

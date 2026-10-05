@@ -16,8 +16,8 @@ odwiedzajacego na wlasciwa domene. Zero backendu, zero bazy danych, zero formula
 - Obrazy (logo, tlo): hostowane na Cloudfront (`d1yei2z3i6k35z.cloudfront.net`) — nie w repo.
 - Hosting: Vercel, `vercel.json` (`cleanUrls`, brak trailing slash). Deploy = `git push` na
   `main`. Zobacz `docs/adr/0001-static-hosting-vercel-not-lovable.md`.
-- Testy: Playwright (`e2e/smoke.spec.ts`) — scaffolding istnieje, ale nie jest jeszcze
-  podpiety pod runner. Zobacz `docs/quality/BACKLOG.md`.
+- Testy: brak (nie ma logiki do testowania). Szablon E2E usunięty 2026-09-05 —
+  zobacz `docs/quality/BACKLOG.md`.
 
 ## Moduly i granice (co jest gdzie)
 
@@ -25,7 +25,6 @@ odwiedzajacego na wlasciwa domene. Zero backendu, zero bazy danych, zero formula
 |---|---|---|
 | `index.html` | caly produkt: markup + `<style>` inline + tresc | T1 |
 | `vercel.json` | konfiguracja hostingu (czyste URL-e) | T1 |
-| `e2e/smoke.spec.ts` | dymny test: strona renderuje sie, konsola bez bledow | T1 |
 | `.github/workflows/quality.yml` | CI: build/lint/typecheck/test/build sa self-skip bez `package.json`; Semgrep i Gitleaks zawsze dzialaja | — |
 | `.github/workflows/claude-review.yml` | recenzja PR przez Claude (wymaga `CLAUDE_CODE_OAUTH_TOKEN`; bez sekretu pomija sie) | — |
 
@@ -53,6 +52,10 @@ flowchart LR
   tuz nad nia, ktory tlumaczy jak ja przywrocic).
 - **Sekrety:** brak — strona nie ma backendu ani klucza do przechowania.
 - **CI/bezpieczenstwo:** `.github/workflows/` — patrz tabela wyzej.
+
+## Operacje
+
+Deploy, rollback, domena/DNS, monitoring i typowe awarie: `docs/RUNBOOK.md`.
 
 ## Decyzje nieodwracalne
 

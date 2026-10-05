@@ -17,8 +17,7 @@
 10. Nie commituj z `--no-verify`. Czerwone CI to nie sugestia, to sciana.
 
 ## Kontekst projektu
-<!-- UZUPELNIJ per repo: stack, komendy, pliki wzorcowe -->
-- Stack:
-- Komendy: `npm run dev` / `npm run build` / `npm run lint` / `npm test`
-- Plik wzorcowy komponentu:
-- Plik wzorcowy API/serwisu:
+- Stack: statyczny `index.html` (HTML + CSS inline, zero JS), hosting Vercel. Brak `package.json`, brak buildu, brak sekretów. Nie dodawaj bundlera/frameworka (ADR-0001).
+- Komendy: lokalnie `python3 -m http.server 8000`; lint/testy/build nie istnieją (CI = Semgrep + Gitleaks)
+- Plik wzorcowy: `index.html` (cały produkt); mapa i operacje: `docs/ARCHITECTURE.md`, `docs/RUNBOOK.md`
+- Karta Car Rental jest zakomentowana celowo (wypożyczalnia zamknięta 2026-09-04) — nie przywracaj bez decyzji właściciela
